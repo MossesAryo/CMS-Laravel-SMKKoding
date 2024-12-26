@@ -50,7 +50,7 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // Function to open modal
+   
     window.openModal = function(id) {
         const overlay = document.getElementById(`updateModalOverlay${id}`);
         const checkbox = document.getElementById(`updateModalToggle${id}`);
@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     };
 
-    // Function to close modal
+   
     window.closeModal = function(id) {
         const overlay = document.getElementById(`updateModalOverlay${id}`);
         const checkbox = document.getElementById(`updateModalToggle${id}`);
@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     };
 
-    // Close modal when clicking outside
+    
     document.querySelectorAll('.modal-overlay').forEach(overlay => {
         overlay.addEventListener('click', function(e) {
             if (e.target === this) {
@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Close modal on escape key
+    
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape') {
             document.querySelectorAll('.modal-overlay.active').forEach(overlay => {

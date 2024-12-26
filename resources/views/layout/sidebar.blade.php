@@ -9,7 +9,7 @@
                 </a>
             </li>
             <li class="mb-4">
-                <a href="{{ route('back.dashboard.articles') }}" class="flex items-center p-2 hover:bg-gray-700 rounded">
+                <a href="{{ url('article') }}" class="flex items-center p-2 hover:bg-gray-700 rounded">
                     <i class="fas fa-users mr-3"></i>
                     Articles
                 </a>
