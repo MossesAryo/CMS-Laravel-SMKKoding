@@ -7,5 +7,17 @@ use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
-    //
+    public function index(){
+        return view('back.dashboard.index');
+    }
+    
+    public function user(){
+        return view('back.dashboard.user');
+    }
+    public function articles(){
+        return view('back.dashboard.articles');
+    }
+    public function categories(){
+        return view('back.dashboard.categories');
+    }
 }
