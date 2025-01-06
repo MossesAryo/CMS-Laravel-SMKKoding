@@ -10,10 +10,10 @@
         <!-- Table Section -->
         <div class="flex items-center justify-between mb-4">
             <h2 class="text-xl font-bold">Recent Articles</h2>
-            <label for="createModalToggle"
+            <a href="{{ url('article/create') }}"
                 class="text-white bg-green-500 hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center cursor-pointer">
                 Create
-            </label>
+            </a>
         </div>
 
         @if ($errors->any())
@@ -47,38 +47,7 @@
                     </tr>
                 </thead>
                 <tbody class="text-gray-700">
-                    {{-- @foreach ($articles as $item)
-                <tr class="border-b hover:bg-gray-50">
-                    <td class="py-3 px-4 text-sm">{{ $loop->iteration }}</td>
-                    <td class="py-3 px-4 text-sm">{{ $item->title }}</td>
-                    <td class="py-3 px-4 text-sm">{{ $item->Category->name }}</td>
-
-                    @if ($item->status == 0)
-                    <td class="py-3 px-4 text-sm text-white bg-red-400">Private</td>
-                    @else
-                    <td class="py-3 px-4 text-sm text-white bg-green-500">Public</td>    
-                    @endif
-                    <td class="py-3 px-4 text-sm">{{ $item->status}}</td>
-
-                    <td class="py-3 px-4 text-sm">{{ $item->publish_date }}</td>
-                    <td class="py-3 px-4 text-sm">
-                        <div class="flex space-x-2">
-                            <button type="button" onclick="openModal('{{ $item->id }}')" 
-                                class="text-white bg-yellow-500 hover:bg-yellow-600 focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center cursor-pointer">
-                            Detail
-                            </button>
-                            <button type="button" onclick="openModal('{{ $item->id }}')" 
-                                class="text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center cursor-pointer">
-                            Edit
-                            </button>
-                            <button type="button" onclick="openDeleteModal('{{ $item->id }}')" 
-                                class="text-white bg-red-500 hover:bg-red-600 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center cursor-pointer">
-                            Delete
-                            </button>
-                        </div>
-                    </td>
-                </tr>
-                @endforeach --}}
+            
                 </tbody>
             </table>
         </div>
@@ -94,8 +63,8 @@
                     serverside: true,
                     ajax: '{{ url()->current() }}',
                     columns: [{
-                            data: 'id',
-                            name: 'id'
+                            data: 'DT_RowIndex',
+                            name: 'DT_RowIndex'
                         },
                         {
                             data: 'title',

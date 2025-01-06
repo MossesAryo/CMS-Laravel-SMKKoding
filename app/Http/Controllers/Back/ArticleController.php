@@ -3,10 +3,15 @@
 namespace App\Http\Controllers\Back;
 
 use App\Models\Articles;
+use App\Models\Categories;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ArticleRequest;
+use Illuminate\Support\Facades\Storage;
 use Yajra\DataTables\Facades\DataTables;
+use App\Http\Requests\UpdateArticleRequest;
+use PhpOffice\PhpSpreadsheet\Calculation\Category;
 
 class ArticleController extends Controller
 {
@@ -18,6 +23,7 @@ class ArticleController extends Controller
         if (request()->ajax()) {
             $article = Articles::with('Category')->latest()->get();
             return DataTables::of($article)
+                ->addIndexColumn()
                 ->addcolumn('category_id', function ($article) {
                     return $article->category->name;
                 })
@@ -38,23 +44,17 @@ class ArticleController extends Controller
 
                 ->addcolumn('button', function ($article) {
                     return '
-                    <button type="button" 
-                        class="text-white bg-yellow-500 hover:bg-yellow-600 focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center cursor-pointer">
-                        Detail
-                    </button>
-                    <button type="button" 
-                        class="text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center cursor-pointer">
-                        Edit
-                    </button>
-                    <button type="button"
-                        class="text-white bg-red-500 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center cursor-pointer">
-                        Delete
-                    </button>
+                   <div class="text-center">
+                    <a href="article/' . $article->id . '" class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded">Detail</a>
+                    <a href="article/' . $article->id . '/edit" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Edit</a>
+                    <a href="" class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded">Delete</a>
+                   </div>
+
                 ';
                 })
 
 
-                ->rawcolumns(['category_id', 'status','button'])
+                ->rawcolumns(['category_id', 'status', 'button'])
                 ->make();
         }
         return view('back.article.article');
@@ -65,23 +65,31 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        //
+        return view('back.article.create', [
+            'categories' => Categories::get()
+        ]);
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(ArticleRequest $request)
     {
 
-        $data = $request->validate([
-            'name' => 'required|min:3'
-        ]);
-        $data['slug'] = Str::slug($data['name']);
+        $data = $request->validated();
 
+
+        if ($request->hasFile('img')) {
+            $file = $request->file('img');
+            $filename = uniqid() . '.' . $file->getClientOriginalExtension();
+            $path = Storage::disk('public')->put('images', $filename);
+            $data['img'] = $path;
+        } else {
+            return "No image";
+        }
+        $data['slug'] = Str::slug($data['title']);
         Articles::create($data);
-
-        return back()->with('success', 'Article has been created');
+        return redirect()->route('article.index')->with('success', 'Article data has been created');
     }
 
     /**
@@ -89,7 +97,10 @@ class ArticleController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $article = Articles::find($id);
+        return view('back.article.show', [
+            'article' => $article
+        ]);
     }
 
     /**
@@ -97,15 +108,33 @@ class ArticleController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        return view('back.article.update', [
+            'article'    => Articles::find($id),
+            'categories' => Categories::get()
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateArticleRequest $request, string $id)
     {
-        //
+        $data = $request->validated();
+
+        if ($request->hasFile('img')) {
+            $file = $request->file('img');
+            $filename = uniqid() . '.' . $file->getClientOriginalExtension();
+            $path = Storage::disk('public')->put('images', $filename);
+
+            Storage::delete('images',$request->oldImg);
+            $data['img'] = $path;
+        } else {
+            $data['img'] = $request->oldImg;
+        }
+        $data['slug'] = Str::slug($data['title']);
+        Articles::find($id)->update($data);
+        return redirect()->route('article.index')->with('success', 'Article data has been created');
+    
     }
 
     /**
@@ -113,6 +142,8 @@ class ArticleController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        Articles::find($id)->delete();
+
+        return back()->with('success', 'Category has been deleted');
     }
 }
