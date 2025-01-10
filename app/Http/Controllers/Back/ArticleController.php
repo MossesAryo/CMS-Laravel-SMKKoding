@@ -47,7 +47,7 @@ class ArticleController extends Controller
                    <div class="text-center">
                     <a href="article/' . $article->id . '" class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded">Detail</a>
                     <a href="article/' . $article->id . '/edit" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Edit</a>
-                    <a href="" class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded">Delete</a>
+                    <a href="#" onclick="deleteArticle(this)" data-id="' . $article->id . '" class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded">Delete</a>
                    </div>
 
                 ';
@@ -78,17 +78,18 @@ class ArticleController extends Controller
 
         $data = $request->validated();
 
-
         if ($request->hasFile('img')) {
             $file = $request->file('img');
             $filename = uniqid() . '.' . $file->getClientOriginalExtension();
-            $path = Storage::disk('public')->put('images', $filename);
+            $path = Storage::disk('public')->putFileAs('images', $file, $filename);
             $data['img'] = $path;
         } else {
-            return "No image";
+            return redirect()->back()->with('error', 'Image is required');
         }
+
         $data['slug'] = Str::slug($data['title']);
         Articles::create($data);
+
         return redirect()->route('article.index')->with('success', 'Article data has been created');
     }
 
@@ -124,17 +125,22 @@ class ArticleController extends Controller
         if ($request->hasFile('img')) {
             $file = $request->file('img');
             $filename = uniqid() . '.' . $file->getClientOriginalExtension();
-            $path = Storage::disk('public')->put('images', $filename);
+            $path = Storage::disk('public')->putFileAs('images', $file, $filename);
 
-            Storage::delete('images',$request->oldImg);
+            
+            if ($request->oldImg && Storage::disk('public')->exists($request->oldImg)) {
+                Storage::disk('public')->delete($request->oldImg);
+            }
+
             $data['img'] = $path;
         } else {
             $data['img'] = $request->oldImg;
         }
+
         $data['slug'] = Str::slug($data['title']);
-        Articles::find($id)->update($data);
-        return redirect()->route('article.index')->with('success', 'Article data has been created');
-    
+        Articles::findOrFail($id)->update($data);
+
+        return redirect()->route('article.index')->with('success', 'Article data has been updated');
     }
 
     /**
