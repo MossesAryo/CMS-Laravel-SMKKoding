@@ -46,33 +46,13 @@
                 </tr>
             </thead>
             <tbody class="text-gray-700">
-
+               
             </tbody>
         </table>
     </div>
 
 
 
-<script>
-$(document).ready(function() {
-    // Check for success message first
-    const swal = $('.swal').data('swal');
-    if (swal) {
-        Swal.fire({
-            position: "center",
-            icon: "success",
-            title: swal,
-            showConfirmButton: false,
-            timer: 1500,
-        });
-    }
-            
-            // Example delete function (Optional)
-            function deleteArticle(e) {
-                alert("Delete action triggered");
-            }
-        });
-</script>
 
         
 
