@@ -13,7 +13,7 @@ Route::get('/', function () {
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('back.dashboard.index');
 Route::get('/user', [DashboardController::class, 'user'])->name('back.dashboard.user');
 
-    Route::resource('article', ArticleController::class);
+Route::resource('article', ArticleController::class);
 
 Route::get('articles', [DashboardController::class, 'articles'])->name('back.dashboard.articles');
 Route::resource('/categories', CategorController::class)->only([

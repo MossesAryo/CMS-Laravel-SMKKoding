@@ -47,7 +47,7 @@ class ArticleController extends Controller
                    <div class="text-center">
                     <a href="article/' . $article->id . '" class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded">Detail</a>
                     <a href="article/' . $article->id . '/edit" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Edit</a>
-                    <a href="#" onclick="deleteArticle(this)" data-id="' . $article->id . '" class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded">Delete</a>
+                    <a href="#" onclick="deleteArticle(' . $article->id . ')" class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded">Delete</a>
                    </div>
 
                 ';
@@ -127,7 +127,7 @@ class ArticleController extends Controller
             $filename = uniqid() . '.' . $file->getClientOriginalExtension();
             $path = Storage::disk('public')->putFileAs('images', $file, $filename);
 
-            
+
             if ($request->oldImg && Storage::disk('public')->exists($request->oldImg)) {
                 Storage::disk('public')->delete($request->oldImg);
             }
@@ -148,8 +148,13 @@ class ArticleController extends Controller
      */
     public function destroy(string $id)
     {
-        Articles::find($id)->delete();
 
-        return back()->with('success', 'Category has been deleted');
+        try {
+            $article = Articles::findOrFail($id);
+            $article->delete();
+            return response()->json(['success' => true, 'message' => 'Article deleted successfully']);
+        } catch (\Exception $e) {
+            return response()->json(['success' => false, 'message' => $e->getMessage()], 500);
+        }
     }
 }
