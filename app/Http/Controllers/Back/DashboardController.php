@@ -15,9 +15,9 @@ class DashboardController extends Controller
         return view('back.dashboard.user');
     }
     public function articles(){
-        return view('back.dashboard.articles');
+        return view('back.article.article');
     }
     public function categories(){
-        return view('back.dashboard.categories');
+        return view('back.category.categories');
     }
 }

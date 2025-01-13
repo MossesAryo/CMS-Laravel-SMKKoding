@@ -80,7 +80,8 @@
             </div>
 
             <div class="flex justify-end gap-2">
-                <button type="button" class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600">Cancel</button>
+                <a href="{{ url('article') }}"
+                <button type="button" class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600">Cancel</button></a>
                 <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Save</button>
             </div>
         </form>

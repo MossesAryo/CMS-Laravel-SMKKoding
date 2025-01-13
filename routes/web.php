@@ -15,7 +15,9 @@ Route::get('/user', [DashboardController::class, 'user'])->name('back.dashboard.
 
 Route::resource('article', ArticleController::class);
 
-Route::get('articles', [DashboardController::class, 'articles'])->name('back.dashboard.articles');
+Route::get('articles', [DashboardController::class, 'articles'])
+->name('back.article.articles');
+
 Route::resource('/categories', CategorController::class)->only([
     'index','store','update','destroy'
 ])
