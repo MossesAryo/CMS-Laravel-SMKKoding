@@ -20,7 +20,7 @@
                     </tr>
                     <tr>
                         <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm">Description</th>
-                        <td class="px-4 py-3">: {{ $article->desc }}</td>
+                        <td class="px-4 py-3 prose max-w-none">{!! $article->desc !!}</td>
                     </tr>
 
                     <tr>

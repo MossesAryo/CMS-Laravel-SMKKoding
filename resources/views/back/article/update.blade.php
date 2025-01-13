@@ -2,13 +2,9 @@
 
 @section('main')
     <main class="flex-1 p-6">
-
         <div class="flex justify-between items-center mb-6">
             <h1 class="text-2xl font-bold">Update Article</h1>
         </div>
-
-        <!-- Table Section -->
-
 
         @if ($errors->any())
             <div class="mb-4 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative">
@@ -49,8 +45,7 @@
 
             <div class="mb-4">
                 <label for="desc" class="block text-sm font-medium text-gray-700">Description</label>
-                <textarea id="desc" name="desc" class="w-full border border-gray-300 rounded-lg px-3 py-2 mt-1 text-sm"
-                    placeholder="Enter Description">{{ old('description', $article->desc) }}</textarea>
+                <textarea id="desc" name="desc" class="w-full">{{ old('description', $article->desc) }}</textarea>
             </div>
 
             <div class="mb-4">
@@ -58,7 +53,7 @@
                 <input type="file" id="img" name="img"
                     class="w-full border border-gray-300 rounded-lg px-3 py-2 mt-1 text-sm">
                 <div class="mt-3">
-                    <small>Gambar Lama</small>
+                    <small>Current Image</small>
                     <img src="{{ asset('storage/' . $article->img) }}" alt="" width="100px">
                 </div>
             </div>
@@ -85,8 +80,15 @@
                 <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Save</button>
             </div>
         </form>
-        </tbody>
-        </table>
-        </div>
 
-    @endsection
+        <!-- Initialize CKEditor -->
+       
+        <script>
+            CKEDITOR.replace('desc', {
+                height: 300,
+                filebrowserUploadUrl: "{{ route('ckeditor.upload', ['_token' => csrf_token()]) }}",
+                filebrowserUploadMethod: 'form'
+            });
+        </script>
+    </main>
+@endsection

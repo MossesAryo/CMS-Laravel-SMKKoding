@@ -20,5 +20,6 @@ Route::get('articles', [DashboardController::class, 'articles'])
 
 Route::resource('/categories', CategorController::class)->only([
     'index','store','update','destroy'
-])
+]);
+Route::post('ckeditor/upload', [ArticleController::class, 'uploadImage'])->name('ckeditor.upload');
 ?>
