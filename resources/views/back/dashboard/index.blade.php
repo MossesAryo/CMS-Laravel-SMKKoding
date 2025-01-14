@@ -98,7 +98,7 @@
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{$item->created_at}}</td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                         <div class="flex space-x-2">
-                                          <a href=""
+                                          <a href="{{ url('article/'.$item->id) }}"
                                           class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded">Detail</a>
                                         </div>
                                     </td>
@@ -140,7 +140,7 @@
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{$item->created_at}}</td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                         <div class="flex space-x-2">
-                                          <a href=""
+                                          <a href="{{ url('article/'.$item->id) }}"
                                           class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded">Detail</a>
                                         </div>
                                     </td>
