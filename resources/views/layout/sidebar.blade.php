@@ -27,7 +27,11 @@
                 </a>
             </li>
             <li class="mb-4">
-                <a href="#" class="flex items-center p-2 hover:bg-gray-700 rounded">
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                </form>
+                <a href="{{ route('logout') }}"onclick="event.preventDefault();
+                document.getElementById('logout-form').submit();" class="flex items-center p-2 hover:bg-gray-700 rounded">
                     <i class="fas fa-sign-out-alt mr-3"></i>
                     Logout
                 </a>
