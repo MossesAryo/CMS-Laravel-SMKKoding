@@ -1,6 +1,6 @@
 <nav class="w-64 bg-gray-800 text-white h-screen">
     <div class="p-4">
-        <h4 class="text-center text-xl font-bold">Welcome, Admin Name</h4>
+        <h4 class="text-center text-xl font-bold">Welcome, {{ auth()->user()->name }}</h4>
         <ul class="mt-6">
             <li class="mb-4">
                 <a href="{{ route('back.dashboard.index') }}" class="flex items-center p-2 hover:bg-gray-700 rounded">

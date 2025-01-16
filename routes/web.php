@@ -13,18 +13,22 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('back.dashboard.index');
-Route::resource('/users', UserController::class);
+Route::middleware('auth')->group(function(){
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('back.dashboard.index');
+    Route::resource('/users', UserController::class);
+    
+    Route::resource('article', ArticleController::class);
+    
+    Route::get('articles', [DashboardController::class, 'articles'])
+    ->name('back.article.articles');
+    
+    Route::resource('/categories', CategorController::class)->only([
+        'index','store','update','destroy'
+    ]);
+    Route::post('ckeditor/upload', [ArticleController::class, 'uploadImage'])->name('ckeditor.upload');
+});
 
-Route::resource('article', ArticleController::class);
 
-Route::get('articles', [DashboardController::class, 'articles'])
-->name('back.article.articles');
-
-Route::resource('/categories', CategorController::class)->only([
-    'index','store','update','destroy'
-]);
-Route::post('ckeditor/upload', [ArticleController::class, 'uploadImage'])->name('ckeditor.upload');
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 ?>
