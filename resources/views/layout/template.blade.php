@@ -1,4 +1,5 @@
 <html>
+
 <head>
     <title>Admin Dashboard</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -16,6 +17,7 @@
         body {
             font-family: 'Roboto', sans-serif;
         }
+
         div.dataTables_filter {
             margin-bottom: 10px;
         }
@@ -28,6 +30,7 @@
         });
     </script>
 </head>
+
 <body class="bg-gray-100">
     <div class="flex">
         <!-- Sidebar -->
@@ -40,4 +43,5 @@
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>

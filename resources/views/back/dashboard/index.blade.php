@@ -18,7 +18,7 @@
                                 <div class="text-white">
                                     <h3 class="text-lg font-semibold opacity-90">Total Categories</h3>
                                     <p class="text-3xl font-bold mt-2">{{ $total_categories }} Categories</p>
-                                    <p class="text-sm mt-2 bg-white bg-opacity-20 rounded-full px-2 py-1 inline-block">
+                                    <p class="text-sm mt-2 bg-blue bg-opacity-20 rounded-full px-2 py-1 inline-block">
                                         +2 new
                                     </p>
                                 </div>
@@ -42,7 +42,7 @@
                                 <div class="text-white">
                                     <h3 class="text-lg font-semibold opacity-90">Total Articles</h3>
                                     <p class="text-3xl font-bold mt-2">{{ $total_articles }} Articles</p>
-                                    <p class="text-sm mt-2 bg-white bg-opacity-20 rounded-full px-2 py-1 inline-block">
+                                    <p class="text-sm mt-2 bg-purple bg-opacity-20 rounded-full px-2 py-1 inline-block">
                                         +12 new
                                     </p>
                                 </div>

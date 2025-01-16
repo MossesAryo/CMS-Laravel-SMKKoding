@@ -2,19 +2,11 @@
 
 namespace App\Http\Controllers;
 
-abstract class Controller
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Routing\Controller as BaseController;
+
+class Controller extends BaseController
 {
-    public function index(){
-        return view('dashboard.index');
-    }
-    
-    public function user(){
-        return view('dashboard.user');
-    }
-    public function articles(){
-        return view('dashboard.articles');
-    }
-    public function categories(){
-        return view('dashboard.categories');
-    }
+    use AuthorizesRequests, ValidatesRequests;
 }

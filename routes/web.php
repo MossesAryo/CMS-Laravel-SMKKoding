@@ -1,17 +1,20 @@
 <?php
 
+use App\Models\User;
+use App\Models\Categories;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\back\UserController;
 use App\Http\Controllers\Back\ArticleController;
 use App\Http\Controllers\Back\CategorController;
 use App\Http\Controllers\Back\DashboardController;
-use App\Models\Categories;
-use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('back.dashboard.index');
-Route::get('/user', [DashboardController::class, 'user'])->name('back.dashboard.user');
+Route::resource('/users', UserController::class);
 
 Route::resource('article', ArticleController::class);
 
@@ -22,4 +25,6 @@ Route::resource('/categories', CategorController::class)->only([
     'index','store','update','destroy'
 ]);
 Route::post('ckeditor/upload', [ArticleController::class, 'uploadImage'])->name('ckeditor.upload');
+Auth::routes();
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 ?>

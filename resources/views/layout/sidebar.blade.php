@@ -21,7 +21,7 @@
                 </a>
             </li>
             <li class="mb-4">
-                <a href="{{ route('back.dashboard.user') }}" class="flex items-center p-2 hover:bg-gray-700 rounded">
+                <a href="{{ url('users') }}" class="flex items-center p-2 hover:bg-gray-700 rounded">
                     <i class="fas fa-cogs mr-3"></i>
                     Users
                 </a>
