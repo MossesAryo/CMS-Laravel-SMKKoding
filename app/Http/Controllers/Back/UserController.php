@@ -24,9 +24,11 @@ class UserController extends Controller
       $data['password'] = Hash::make($data['password']);
       User::create($data); 
       return back()->with('success','Users has been created');
-
-
-
+   }
+   
+   public function destroy(string $id){
+      User::find($id)->delete();
+      return back()->with('success','Users has been deleted');
 
    }
 }

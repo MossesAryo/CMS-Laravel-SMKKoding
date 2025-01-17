@@ -71,6 +71,8 @@
     {{-- Modal Create --}}
     @include('back.user.create-modal')
 
+    @include('back.user.delete')
+
     
 
 </main>

@@ -11,7 +11,7 @@
     }
 </style>
 
-@foreach ($categories as $item)
+@foreach ($users as $item)
     <input type="checkbox" id="deleteModalToggle{{ $item->id }}" class="hidden">
     <div class="fixed inset-0 bg-black bg-opacity-50 z-40 modal-overlay hidden flex items-center justify-center"
         id="deleteModalOverlay{{ $item->id }}" data-modal="deleteModal{{ $item->id }}">
@@ -26,10 +26,10 @@
                 </button>
             </div>
             <div class="p-6">
-                <p class="text-gray-700">Are you sure you want to delete category "{{ $item->name }}"? This action
+                <p class="text-gray-700">Are you sure you want to delete This Users "{{ $item->name }}"? This action
                     cannot be undone.</p>
             </div>
-            <form action="{{ url('categories', $item->id) }}" method="POST" class="inline">
+            <form action="{{ url('users', $item->id) }}" method="POST" class="inline">
                 <div class="px-6 py-4 border-t bg-gray-50 flex justify-end space-x-3 rounded-b-lg">
                     <button type="button" onclick="closeDeleteModal('{{ $item->id }}')"
                         class="bg-gray-500 text-white px-4 py-2 rounded mr-2 hover:bg-gray-400 cursor-pointer">
@@ -39,7 +39,7 @@
                     @method('DELETE')
                     <button type="submit"
                         class="bg-red-700 text-white px-4 py-2 rounded mr-2 hover:bg-red-500 cursor-pointer">
-                        Delete Category
+                        Delete Users
                     </button>
             </form>
         </div>
