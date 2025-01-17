@@ -68,7 +68,10 @@
         </table>
     </div>
 
-   
+    {{-- Modal Create --}}
+    @include('back.user.create-modal')
+
+    
 
 </main>
 @endsection
