@@ -14,12 +14,14 @@
                     Articles
                 </a>
             </li>
+            @if (auth()->user()->role == 1)
             <li class="mb-4">
                 <a href="{{ url('categories') }}" class="flex items-center p-2 hover:bg-gray-700 rounded">
                     <i class="fas fa-chart-line mr-3"></i>
                     Categories
                 </a>
-            </li>
+            </li>       
+            @endif
             <li class="mb-4">
                 <a href="{{ url('users') }}" class="flex items-center p-2 hover:bg-gray-700 rounded">
                     <i class="fas fa-cogs mr-3"></i>

@@ -15,18 +15,18 @@ Route::get('/', function () {
 
 Route::middleware('auth')->group(function(){
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('back.dashboard.index');
-    Route::resource('/users', UserController::class);
     
     Route::resource('article', ArticleController::class);
     
     Route::get('articles', [DashboardController::class, 'articles'])
     ->name('back.article.articles');
+    Route::resource('/users', UserController::class);
     
     Route::resource('/categories', CategorController::class)->only([
         'index','store','update','destroy'
-    ]);
-    Route::post('ckeditor/upload', [ArticleController::class, 'uploadImage'])->name('ckeditor.upload');
-});
+        ])->middleware('UserAccess:1');
+        Route::post('ckeditor/upload', [ArticleController::class, 'uploadImage'])->name('ckeditor.upload');
+    });
 
 
 Auth::routes();
