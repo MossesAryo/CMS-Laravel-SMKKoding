@@ -7,11 +7,19 @@ use Illuminate\Http\Request;
 use App\Http\Requests\UserRequest;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UpdateRequest;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
    public function index(){
+     if(Auth::user()->role == 1){
+       $users = User::get();
+     }
+     else{
+       $users = User::whereId(Auth::user()->id)->get();
+     }
+
     return view('back.user.index',[
         'users' => User::get()
     ]);

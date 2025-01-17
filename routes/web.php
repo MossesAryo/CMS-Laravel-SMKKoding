@@ -9,6 +9,7 @@ use App\Http\Controllers\Back\ArticleController;
 use App\Http\Controllers\Back\CategorController;
 use App\Http\Controllers\Back\DashboardController;
 
+
 Route::get('/', function () {
     return view('welcome');
 });
