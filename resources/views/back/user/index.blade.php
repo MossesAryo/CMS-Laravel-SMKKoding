@@ -73,6 +73,8 @@
 
     @include('back.user.delete')
 
+    @include('back.user.update-modal')
+
     
 
 </main>

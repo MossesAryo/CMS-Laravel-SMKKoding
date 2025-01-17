@@ -11,7 +11,7 @@
     }
 </style>
 
-@foreach ($categories as $item)
+@foreach ($users as $item)
 <input type="checkbox" id="updateModalToggle{{ $item->id }}" class="hidden">
 <div class="fixed inset-0 bg-black bg-opacity-50 z-40 modal-overlay hidden flex items-center justify-center" id="updateModalOverlay{{ $item->id }}" data-modal="updateModal{{ $item->id }}">
     <!-- Remove the min-h-screen and the outer flex container -->
@@ -24,13 +24,28 @@
                 </svg>
             </button>
         </div>
-        <form action="{{ url('categories', $item->id) }}" method="POST">
+        <form action="{{ url('users', $item->id) }}" method="POST">
             @csrf
             @method('PUT')
             <div class="p-6">
                 <div class="mb-4">
-                    <label for="name{{ $item->id }}" class="block text-sm font-medium text-gray-700 mb-2">Category Name</label>
+                    <label for="name{{ $item->id }}" class="block text-sm font-medium text-gray-700 mb-2">Name</label>
                     <input type="text" name="name" id="name{{ $item->id }}" value="{{ $item->name }}" required 
+                           class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500">
+                </div>
+                <div class="mb-4">
+                    <label for="name{{ $item->id }}" class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                    <input type="email" name="email" id="name{{ $item->id }}" value="{{ $item->email }}" required 
+                           class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500">
+                </div>
+                <div class="mb-4">
+                    <label for="name{{ $item->id }}" class="block text-sm font-medium text-gray-700 mb-2">Password</label>
+                    <input type="password" name="password" id="name{{ $item->id }}"   
+                           class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500">
+                </div>
+                <div class="mb-4">
+                    <label for="name{{ $item->id }}" class="block text-sm font-medium text-gray-700 mb-2">Confirm Password</label>
+                    <input type="password" name="password_confirmation" id="name{{ $item->id }}"  
                            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500">
                 </div>
             </div>
