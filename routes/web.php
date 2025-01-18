@@ -16,6 +16,8 @@ use App\Http\Controllers\Front\HomeController;
 
 Route::get('/', [HomeController::class,'index']);
 
+Route::get('/article/search', [HomeController::class,'index'])->name('search');
+
 Route::middleware('auth')->group(function(){
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('back.dashboard.index');
     
