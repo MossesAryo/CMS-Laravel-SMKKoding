@@ -8,11 +8,13 @@ use App\Http\Controllers\back\UserController;
 use App\Http\Controllers\Back\ArticleController;
 use App\Http\Controllers\Back\CategorController;
 use App\Http\Controllers\Back\DashboardController;
+use App\Http\Controllers\Front\HomeController;
 
+// Route::get('/', function () {
+//     return view('auth.login');
+// });
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [HomeController::class,'index']);
 
 Route::middleware('auth')->group(function(){
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('back.dashboard.index');
