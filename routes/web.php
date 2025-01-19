@@ -14,26 +14,28 @@ use App\Http\Controllers\Front\HomeController;
 //     return view('auth.login');
 // });
 
-Route::get('/', [HomeController::class,'index']);
+Route::get('/', [HomeController::class, 'index']);
 
-Route::get('/article/search', [HomeController::class,'index'])->name('search');
+Route::post('/article/search', [HomeController::class, 'index'])->name('search');
 
-Route::middleware('auth')->group(function(){
+Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('back.dashboard.index');
-    
+
     Route::resource('article', ArticleController::class);
-    
+
     Route::get('articles', [DashboardController::class, 'articles'])
-    ->name('back.article.articles');
+        ->name('back.article.articles');
     Route::resource('/users', UserController::class);
-    
+
     Route::resource('/categories', CategorController::class)->only([
-        'index','store','update','destroy'
-        ])->middleware('UserAccess:1');
-        Route::post('ckeditor/upload', [ArticleController::class, 'uploadImage'])->name('ckeditor.upload');
-    });
+        'index',
+        'store',
+        'update',
+        'destroy'
+    ])->middleware('UserAccess:1');
+    Route::post('ckeditor/upload', [ArticleController::class, 'uploadImage'])->name('ckeditor.upload');
+});
 
 
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-?>
