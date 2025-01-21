@@ -8,7 +8,7 @@
         <div class="col-lg-8">
             <!-- Featured blog post-->
             <div class="card mb-4">
-                <a href="#!"><img class="card-img-top" src="{{ asset('storage/'.$latest_post->img) }}" alt="..." /></a>
+                <a href="#!"><img class="card-img-top featured-img" src="{{ asset('storage/'.$latest_post->img) }}" alt="..." /></a>
                 <div class="card-body">
                     <div class="small text-muted">{{ $latest_post->created_at->format('d-m-Y') }}</div>
                     <div class="small text-muted">{{ $latest_post->Category->name}}</div>
@@ -23,8 +23,8 @@
                     <div class="col-lg-6">
                         <!-- Blog post-->
                         <div class="card mb-4">
-                            <a href="#"><img class="card-img-top" src="{{ asset('storage/'.$item->img) }}" alt="..." /></a>
-                            <div class="card-body">
+                            <a href="#"><img class="card-img-top post-img" src="{{ asset('storage/'.$item->img) }}" alt="..." /></a>
+                            <div class="card-body card-height">
                                 <div class="small text-muted">
                                     {{$item->created_at->format('d-m-Y') }}
                                     <a href="{{url('category/'.$item->Category->slug)}}">{{$item->Category->name }}</a>
