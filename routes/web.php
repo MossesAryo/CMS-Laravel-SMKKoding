@@ -5,10 +5,11 @@ use App\Models\Categories;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\back\UserController;
+use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\Back\ArticleController;
 use App\Http\Controllers\Back\CategorController;
 use App\Http\Controllers\Back\DashboardController;
-use App\Http\Controllers\Front\HomeController;
+use App\Http\Controllers\Front\ArticleController as FrontArticleController;
 
 // Route::get('/', function () {
 //     return view('auth.login');
@@ -16,6 +17,7 @@ use App\Http\Controllers\Front\HomeController;
 
 Route::get('/', [HomeController::class, 'index']);
 Route::post('/articles/search', [HomeController::class, 'index'])->name('search');
+Route::get('/p/{slug}', [FrontArticleController::class, 'show']);
 
 
 Route::middleware('auth')->group(function () {
