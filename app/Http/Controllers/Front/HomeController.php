@@ -31,4 +31,8 @@ class HomeController extends Controller
             'categories' => Categories::latest()->get()
         ]);
     }
+
+    public function home(){
+        
+    }
 }

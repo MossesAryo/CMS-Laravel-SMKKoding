@@ -9,6 +9,8 @@
         <title>MoBlogs</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="{{ asset('front/img/favicon.ico') }}" />
+        
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="{{ asset('front/css/styles.css') }}" rel="stylesheet" />
         <link href="{{ asset('front/css/custom.css') }}" rel="stylesheet" />
@@ -18,11 +20,11 @@
     <body>
         @include('front.layout.navbar')
         <!-- Page header with logo and tagline-->
-        <header class="py-5 bg-light border-bottom mb-4">
-            <div class="container">
-                <div class="text-center my-5">
-                    <h1 class="fw-bolder">Welcome to Blog Home!</h1>
-                    <p class="lead mb-0">A Bootstrap 5 starter layout for your next blog homepage</p>
+        <header class="page-header mb-4">
+            <div class="container ">
+                <div class="header-content text-center">
+                    <h1 class="header-title">Welcome to MoBlogs</h1>
+                    <p class="header-subtitle">Exploring Ideas, Sharing Stories, Creating Connections</p>
                 </div>
             </div>
         </header>
@@ -32,7 +34,7 @@
 
         <!-- Footer-->
         <footer class="py-5 bg-dark">
-            <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2023</p></div>
+            <div class="container"><p class="m-0 text-center text-white">Copyright &copy; MoBlogs 2024</p></div>
         </footer>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>

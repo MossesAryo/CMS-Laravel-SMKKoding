@@ -23,7 +23,6 @@
             </li>       
             @endif
             @if (auth()->user()->role == 1)
-                  
             <li class="mb-4">
                 <a href="{{ url('users') }}" class="flex items-center p-2 hover:bg-gray-700 rounded">
                     <i class="fas fa-cogs mr-3"></i>

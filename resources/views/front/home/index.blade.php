@@ -41,7 +41,7 @@
                 
             </div>
            
-        <div class="pagination justify-content-center my-4">
+        <div class=" my-4">
             {{ $articles->links() }}
         </div>
         

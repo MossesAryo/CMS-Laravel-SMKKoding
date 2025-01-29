@@ -19,7 +19,7 @@
          <div class="card-body">
              <div>
                  @foreach ($categories as $item)
-                     <span><a href="#!" class="bg-primary badge text-white">{{ $item->name }}</a></span>
+                     <span><a href="#!" class="category bg-primary badge text-white">{{ $item->name }}</a></span>
                  @endforeach
              </div>
          </div>
