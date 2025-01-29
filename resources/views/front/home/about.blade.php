@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <div class="row justify-content-center ">
+        <div class="row justify-content-center mt-5 ">
             <div class="col-lg-8">
                 <div class="card mb-4 shadow-sm ">
                     <div class="card-body">
@@ -48,15 +48,7 @@
                             </div>
                         </div>
 
-                        <div class="mb-5">
-                            <h3 class="mb-4 text-primary">Get in Touch</h3>
-                            <p class="card-text">I’d love to hear from you! Whether you have feedback, suggestions, or just want to chat, feel free to reach out.</p>
-                            <ul class="list-inline">
-                                <li class="list-inline-item"><a href="https://twitter.com/mossesaryo" class="btn btn-outline-primary">Twitter</a></li>
-                                <li class="list-inline-item"><a href="https://github.com/mossesaryo" class="btn btn-outline-secondary">GitHub</a></li>
-                                <li class="list-inline-item"><a href="mailto:mosses@example.com" class="btn btn-outline-success">Email</a></li>
-                            </ul>
-                        </div>
+                        
 
                         <p class="card-text text-center">Thank you for visiting Moblogs! 🚀</p>
                     </div>

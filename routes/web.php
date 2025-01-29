@@ -8,6 +8,7 @@ use App\Http\Controllers\back\UserController;
 use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\Back\ArticleController;
 use App\Http\Controllers\Back\CategorController;
+use App\Http\Controllers\Front\ContactController;
 use App\Http\Controllers\Back\DashboardController;
 use App\Http\Controllers\HomeController as AuthHomeController;
 use App\Http\Controllers\Front\ArticleController as FrontArticleController;
@@ -16,7 +17,7 @@ use App\Http\Controllers\Front\ArticleController as FrontArticleController;
 //         return view('auth.login');
 //     });
     
-    Route::get('/', [HomeController::class, 'index'])->name('home');
+    Route::get('/', [HomeController::class, 'index'])->name('Blogs');
     Route::post('/articles/search', [HomeController::class, 'index'])->name('search');
     Route::get('/p/{slug}', [FrontArticleController::class, 'show']);
     Route::get('/about', function () {

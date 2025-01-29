@@ -1,4 +1,4 @@
-<nav class="w-64 bg-gray-800 text-white h-screen">
+<nav class="w-64 bg-gray-800 text-white ">
     <div class="p-4">
         <h4 class="text-center text-xl font-bold">Welcome, {{ auth()->user()->name }}</h4>
         <ul class="mt-6">
@@ -31,13 +31,9 @@
             </li>
             @endif
             <li class="mb-4">
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                    @csrf
-                </form>
-                <a href="{{ route('logout') }}"onclick="event.preventDefault();
-                document.getElementById('logout-form').submit();" class="flex items-center p-2 hover:bg-gray-700 rounded">
+                <a href="{{ route('Blogs') }}" class="flex items-center p-2 hover:bg-gray-700 rounded">
                     <i class="fas fa-sign-out-alt mr-3"></i>
-                    Logout
+                    Back
                 </a>
             </li>
         </ul>

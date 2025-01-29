@@ -35,10 +35,7 @@
     <div class="flex">
         <!-- Sidebar -->
         @include('layout.sidebar')
-        {{-- panggil section main --}}
-        
-            
-            @yield('main')
+        @yield('main')
         
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="//cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
@@ -48,3 +45,9 @@
 </body>
 
 </html>
+<footer class="py-4 bg-gray-800 mt-auto">
+    <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; MoBlogs 2024</p>
+    </div>
+</footer>
+

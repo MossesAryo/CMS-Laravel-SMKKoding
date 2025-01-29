@@ -9,7 +9,7 @@
         <title>MoBlogs</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="{{ asset('front/img/favicon.ico') }}" />
-        
+
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="{{ asset('front/css/styles.css') }}" rel="stylesheet" />
@@ -17,9 +17,9 @@
         @stack('css')
     </head>
     
-    <body>
+    <body class="d-flex flex-column min-vh-100">
         @include('front.layout.navbar')
-        <!-- Page header with logo and tagline-->
+        @unless (Request::routeIs('about') || Request::routeIs('contact'))
         <header class="page-header mb-4">
             <div class="container ">
                 <div class="header-content text-center">
@@ -28,13 +28,15 @@
                 </div>
             </div>
         </header>
-
+        @endunless
         @yield('content')
-
-
+            </body>
+        </html>
         <!-- Footer-->
-        <footer class="py-5 bg-dark">
-            <div class="container"><p class="m-0 text-center text-white">Copyright &copy; MoBlogs 2024</p></div>
+        <footer class="py-5 bg-dark mt-auto">
+            <div class="container">
+                <p class="m-0 text-center text-white">Copyright &copy; MoBlogs 2024</p>
+            </div>
         </footer>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
