@@ -13,12 +13,18 @@ use App\Http\Controllers\HomeController as AuthHomeController;
 use App\Http\Controllers\Front\ArticleController as FrontArticleController;
 
 // Route::get('/', function () {
-    //     return view('auth.login');
-    // });
+//         return view('auth.login');
+//     });
     
-    Route::get('/', [HomeController::class, 'index']);
+    Route::get('/', [HomeController::class, 'index'])->name('home');
     Route::post('/articles/search', [HomeController::class, 'index'])->name('search');
     Route::get('/p/{slug}', [FrontArticleController::class, 'show']);
+    Route::get('/about', function () {
+        return view('front.home.about');
+    })->name('about');
+    Route::get('/contact', function () {
+        return view('front.home.contact');
+    })->name('contact');
     
     
     Route::middleware('auth')->group(function () {
