@@ -31,7 +31,7 @@
     </script>
 </head>
 
-<body class="bg-gray-100">
+<body class="bg-gray-100 d-flex flex-column min-vh-100">
     <div class="flex">
         <!-- Sidebar -->
         @include('layout.sidebar')
@@ -45,9 +45,11 @@
 </body>
 
 </html>
-<footer class="py-4 bg-gray-800 mt-auto">
-    <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; MoBlogs 2024</p>
+<footer class="py-4 bg-gray-900 text-white mt-auto">
+    <div class="container mx-auto text-center">
+        <p class="m-0 text-sm">&copy; 2024 <span class="font-bold">MoBlogs</span>. All Rights Reserved.</p>
     </div>
 </footer>
+
+
 

@@ -4,6 +4,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8">
+                @unless (Request::routeIs('category.show') || Request::routeIs('search'))
                 <div class="card mb-4">
                     <a href="{{ url('p/' . $latest_post->slug) }}"><img class="card-img-top featured-img"
                             src="{{ asset('storage/' . $latest_post->img) }}" alt="..." /></a>
@@ -15,6 +16,7 @@
                         <a class="btn btn-primary" href="{{ url('p/' . $latest_post->slug) }}">Read more →</a>
                     </div>
                 </div>
+                @endunless
                 <div class="row">
                     @foreach ($articles as $item)
                         <div class="col-lg-6">

@@ -239,7 +239,7 @@
     box-shadow: 0 4px 8px rgb(0, 0, 0); 
 }
 
-/* Animations */
+
 @keyframes fadeInUp {
     from {
         opacity: 0;
@@ -250,20 +250,13 @@
         transform: translateY(0);
     }
 }
-@keyframes subtleShine {
-    from {
-        transform: translate(-50%, -50%) rotate(0deg);
-    }
-    to {
-        transform: translate(-50%, -50%) rotate(180deg); /* Slower and smoother */
-    }
-}
-/* Remove Hover Animation */
+
+
 .header-title:hover {
-    transform: scale(1.02); /* Slight scale effect on hover without animation */
+    transform: scale(1.02); 
     transition: transform 0.2s ease-in-out;
 }
-/* Responsive Design */
+
 @media (max-width: 768px) {
     .page-header {
         min-height: 300px;

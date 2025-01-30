@@ -1,39 +1,33 @@
-<nav class="w-64 bg-gray-800 text-white ">
+<!-- Sidebar -->
+<nav class="w-64 bg-gray-900 text-white min-h-screen">
     <div class="p-4">
-        <h4 class="text-center text-xl font-bold">Welcome, {{ auth()->user()->name }}</h4>
-        <ul class="mt-6">
-            <li class="mb-4">
-                <a href="{{ route('back.dashboard.index') }}" class="flex items-center p-2 hover:bg-gray-700 rounded">
-                    <i class="fas fa-tachometer-alt mr-3"></i>
-                    Dashboard
+        <h4 class="text-center text-lg font-bold mb-4">Welcome, {{ auth()->user()->name }}</h4>
+        <ul class="space-y-3">
+            <li>
+                <a href="{{ route('back.dashboard.index') }}" class="flex items-center p-3 hover:bg-gray-700 rounded transition">
+                    <i class="fas fa-tachometer-alt mr-3"></i> Dashboard
                 </a>
             </li>
-            <li class="mb-4">
-                <a href="{{ url('article') }}" class="flex items-center p-2 hover:bg-gray-700 rounded">
-                    <i class="fas fa-users mr-3"></i>
-                    Articles
+            <li>
+                <a href="{{ url('article') }}" class="flex items-center p-3 hover:bg-gray-700 rounded transition">
+                    <i class="fas fa-newspaper mr-3"></i> Articles
                 </a>
             </li>
             @if (auth()->user()->role == 1)
-            <li class="mb-4">
-                <a href="{{ url('categories') }}" class="flex items-center p-2 hover:bg-gray-700 rounded">
-                    <i class="fas fa-chart-line mr-3"></i>
-                    Categories
+            <li>
+                <a href="{{ url('categories') }}" class="flex items-center p-3 hover:bg-gray-700 rounded transition">
+                    <i class="fas fa-tags mr-3"></i> Categories
                 </a>
             </li>       
-            @endif
-            @if (auth()->user()->role == 1)
-            <li class="mb-4">
-                <a href="{{ url('users') }}" class="flex items-center p-2 hover:bg-gray-700 rounded">
-                    <i class="fas fa-cogs mr-3"></i>
-                    Users
+            <li>
+                <a href="{{ url('users') }}" class="flex items-center p-3 hover:bg-gray-700 rounded transition">
+                    <i class="fas fa-users mr-3"></i> Users
                 </a>
             </li>
             @endif
-            <li class="mb-4">
-                <a href="{{ route('Blogs') }}" class="flex items-center p-2 hover:bg-gray-700 rounded">
-                    <i class="fas fa-sign-out-alt mr-3"></i>
-                    Back
+            <li>
+                <a href="{{ route('Blogs') }}" class="flex items-center p-3 bg-red-600 hover:bg-red-700 rounded transition">
+                    <i class="fas fa-arrow-left mr-3"></i> Back
                 </a>
             </li>
         </ul>

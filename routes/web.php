@@ -19,6 +19,7 @@ use App\Http\Controllers\Front\ArticleController as FrontArticleController;
     
     Route::get('/', [HomeController::class, 'index'])->name('Blogs');
     Route::post('/articles/search', [HomeController::class, 'index'])->name('search');
+    Route::get('/category/{category_id}', [HomeController::class, 'show'])->name('category.show');
     Route::get('/p/{slug}', [FrontArticleController::class, 'show']);
     Route::get('/about', function () {
         return view('front.home.about');
