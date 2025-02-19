@@ -6,12 +6,6 @@
         <div class="flex justify-between items-center mb-6">
             <h1 class="text-2xl font-bold">Users</h1>
         </div>
-       
-            
-        <div class="flex items-center justify-between mb-4">
-            <h2 class="text-xl font-bold">Recent Users</h2>
-        </div>
-       
         
             <div class="flex items-center justify-between mb-4">
                 <h2 class="text-xl font-bold">Recent Users</h2>
